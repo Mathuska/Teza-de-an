@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Fintini {
+  fintina_id   Int     @id @default(autoincrement())
+  denumire_fintina String
+  rol          String
+  tip          String
+  nivel_de_poluare Int
+  locatie      String 
+  caracteristici String
+}
+
+model Caracteristici {
+  caracteristici_id Int     @id @default(autoincrement())
+  nume_caracteristici String
+}
+
+model rol {
+  rol_id Int     @id @default(autoincrement())
+  nume_rol String
+}
+
+model tip {
+  tip_id Int     @id @default(autoincrement())
+  nume_tip String
+}
+
+model nivel_de_poluare{
+  nivel_de_poluare_id Int     @id @default(autoincrement())
+  procentaj_de_poluare Int
+  substanta_poluanta String
+}
+
+model locatie {
+  locatie_id Int     @id @default(autoincrement())
+  locatie_nume String
+}
